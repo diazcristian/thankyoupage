@@ -49,6 +49,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const amount = urlParams.get('amount');
         if (amount !== null) {
             document.getElementById('donationAmount').textContent = amount;
+
+            const timestamp = Date.now().toString(); 
+            const randomRegistrationNumber = timestamp.substr(timestamp.length - 7);
+            document.getElementById('registrationNumber').textContent = randomRegistrationNumber;
         }
     </script>
 </body>
