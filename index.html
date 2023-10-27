@@ -61,7 +61,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const timestamp = Date.now().toString(); 
             const randomRegistrationNumber = timestamp.substr(timestamp.length - 7);
             document.getElementById('registrationNumber').textContent = randomRegistrationNumber;
-        }
-    </script>
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'donationConfirmation', // Event name (you can choose any name you like)
+            'donationAmount': amount,
+            'registrationNumber': registrationNumber
+        });
+</script>
 </body>
 </html>
