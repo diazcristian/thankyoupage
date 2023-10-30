@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        if (amount !== null) {
+            document.getElementById('donationAmount').textContent = amount;
+
+            const timestamp = Date.now().toString(); 
+            const registrationNumber = timestamp.substr(timestamp.length - 7);
+            document.getElementById('registrationNumber').textContent = registrationNumber;
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'donationAmount': amount,
+                'registrationNumber': registrationNumber,
+                'event': 'donationConfirmation'
+            });
+        }
+    </script>
+    
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -37,24 +56,7 @@
     </style>
 </head>
 <body>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const amount = urlParams.get('amount');
-        if (amount !== null) {
-            document.getElementById('donationAmount').textContent = amount;
-
-            const timestamp = Date.now().toString(); 
-            const registrationNumber = timestamp.substr(timestamp.length - 7);
-            document.getElementById('registrationNumber').textContent = registrationNumber;
-
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'donationAmount': amount,
-                'registrationNumber': registrationNumber,
-                'event': 'donationConfirmation'
-            });
-        }
-    </script>
+   
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG3PSMHM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
