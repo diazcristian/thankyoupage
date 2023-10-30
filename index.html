@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
    
+    <!-- Inicialización del dataLayer antes del script de GTM -->
+    <script>window.dataLayer = window.dataLayer || [];</script>
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -43,7 +46,10 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG3PSMHM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Script para manejar los parámetros de URL y empujar al dataLayer -->
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const amount = urlParams.get('amount');
         if (amount !== null) {
@@ -53,13 +59,13 @@
             const registrationNumber = timestamp.substr(timestamp.length - 7);
             document.getElementById('registrationNumber').textContent = registrationNumber;
 
-            window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'donationAmount': amount,
                 'registrationNumber': registrationNumber,
                 'event': 'donationConfirmation'
             });
         }
+    });
     </script>
     
     <div class="container">
