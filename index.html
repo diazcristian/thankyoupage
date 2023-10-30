@@ -37,17 +37,6 @@
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG3PSMHM"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
-    <div class="container">
-        <h1>Thank You for Your Donation</h1>
-        <p>Donation amount: $<span id="donationAmount"></span></p>
-        <p>Registration number: <span id="registrationNumber" class="small-text"></span></p>
-    </div>
-
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const amount = urlParams.get('amount');
@@ -60,11 +49,22 @@
 
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'donationConfirmation',
                 'donationAmount': amount,
-                'registrationNumber': registrationNumber
+                'registrationNumber': registrationNumber,
+                'event': 'donationConfirmation'
             });
         }
     </script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG3PSMHM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="container">
+        <h1>Thank You for Your Donation</h1>
+        <p>Donation amount: $<span id="donationAmount"></span></p>
+        <p>Registration number: <span id="registrationNumber" class="small-text"></span></p>
+    </div>
+
 </body>
 </html>
